@@ -4,7 +4,6 @@ import {loginGoogle, startLoginEmailPassword } from '../../actions/auth';
 import validator from 'validator';
 import { useForm } from "../../hooks/useForm";
 import GoogleLogin from "react-google-login";
-import cookie from 'react-cookies';
 
 
 export const LoginScreen = () => {
@@ -41,8 +40,8 @@ export const LoginScreen = () => {
 
   const responseGoogle = (response) => {
     // const baseUrl = process.env.REACT_APP_CLIENT_ID;
-    
     const {id_token} = response.getAuthResponse()
+    console.log(process.env.REACT_APP_CLIENT_ID);
     dispatch(loginGoogle(id_token));
   
       // if(response.tokenId){
@@ -81,8 +80,8 @@ export const LoginScreen = () => {
               {/* <p>Don't have any account yet? <a href="#">Create an account</a></p> */}
               <div className="">
                 < GoogleLogin 
-                  clientId = "387697216987-83von8lcq3gachr35mbj36t15gbv5jll.apps.googleusercontent.com" 
-                  // clientId= {process.env.REACT_APP_google_CLIENT_ID}
+                  clientId = {process.env.REACT_APP_CLIENT_ID} 
+                  // clientId = "387697216987-83von8lcq3gachr35mbj36t15gbv5jll.apps.googleusercontent.com" 
                   buttonText = "Ingresar con Gmail" 
                   onSuccess = { responseGoogle } 
                   onFailure = { responseGoogle } 
