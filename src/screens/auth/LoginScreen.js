@@ -39,15 +39,8 @@ export const LoginScreen = () => {
   }
 
   const responseGoogle = (response) => {
-    // const baseUrl = process.env.REACT_APP_CLIENT_ID;
     const {id_token} = response.getAuthResponse()
-    console.log(process.env.REACT_APP_CLIENT_ID);
     dispatch(loginGoogle(id_token));
-  
-      // if(response.tokenId){
-      //     cookie.save('token',response.tokenId);
-      //     history.push("/Products");
-      // }
   }
 
   return (
