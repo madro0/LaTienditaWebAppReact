@@ -12,7 +12,8 @@ export const ProductsScreen = () => {
     const dispatch = useDispatch();
     
     const {providers, loading} = useSelector( state => state.provider );
-    const {products, product} = useSelector(state => state.product )
+    const {products, product} = useSelector(state => state.product );
+    const loadingProduct = useSelector(state => state.product.loading)
     const [loadingProducts, setLoadingProducts] = useState(false);
     const [updateP, setUpdateP] = useState(false);
     
@@ -33,8 +34,9 @@ export const ProductsScreen = () => {
         }else{
             dispatch(updateProduct(product.id, name, price, stock, provider));
             handlerSearchProducts();
-            setCreateUpdate('Create');
+            
             dispatch(clearProduct());
+            setUpdateP(true);
         }
 
     }
@@ -55,7 +57,9 @@ export const ProductsScreen = () => {
     }, [searchInput, loadingProducts, provider ]);
     
     useEffect(()=>{
-        feetInputs();
+        feetInputs(
+
+        );
     },[provider,createUpdate, product])
     
     const handlerSearchProducts = () => {
@@ -76,11 +80,12 @@ export const ProductsScreen = () => {
         fetchProviders();
     }
     const feetInputs = ()=>{
-        if( createUpdate ==='Update' ){
+        if( createUpdate ==='Update' && Object.keys(product).length!=0 && !updateP){
             inputChange({name: product.name, price: product.price, provider: product.providerId, stock: product.stock});
         }
-        if( Object.keys(product).length===0){
+        if( createUpdate ==='Update' && Object.keys(product).length===0 && !loadingProduct){
             inputChange({name: "", price: "", provider: "", stock: ""});
+            setCreateUpdate('Create');
             setUpdateP(false);
         }
     }
