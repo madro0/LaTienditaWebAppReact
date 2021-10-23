@@ -1,0 +1,33 @@
+.navbar{
+    height: 20vh;
+    background-color: white;
+}
+
+.nanvar-brand{
+    font-size: xx-large
+}
+
+.background{
+    width: 100%;
+    height: 65vh;
+    background-color: #d65221;}
+
+.footer{
+        width: 100%;
+        height: 20vh;
+        background-color: white}
+
+.imagen{
+        width:400px;
+        height:400px;
+        background-image: url('./La_Tiendita.png');
+        position: relative;    
+        display:block; 
+        display:inline-block ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+}
+       
+
+    
