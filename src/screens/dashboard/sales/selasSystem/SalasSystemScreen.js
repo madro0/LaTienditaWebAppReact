@@ -8,6 +8,7 @@ export const SalasSystemScreen = () => {
     
     const dispatch = useDispatch(); 
     const {products} = useSelector( state => state.product );
+    const idUser = useSelector( state => state.auth.id);
     const [showProductsSearch,setShowProductsSearch ] = useState(false);
     const formValues = {id:"", name:"", price:"", stock:"" };
     const [currentProducto, setCurrentProducto] = useState(formValues);
@@ -98,7 +99,7 @@ export const SalasSystemScreen = () => {
         if(shopingList.length<=0){
             Swal.fire('Error','The shoppping list cannot be empty', 'error');
         }else{
-            dispatch(createSale('67174d66-1e31-481b-8fa0-9be5b5bea78f', totalShoping, list));
+            dispatch(createSale(idUser, totalShoping, list));
         }
     } 
     return (
