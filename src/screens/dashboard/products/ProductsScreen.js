@@ -76,7 +76,7 @@ export const ProductsScreen = () => {
         fetchProviders();
     }
     const feetInputs = ()=>{
-        if( createUpdate ==='Update' && updateP===false ){
+        if( createUpdate ==='Update' ){
             inputChange({name: product.name, price: product.price, provider: product.providerId, stock: product.stock});
         }
         if( Object.keys(product).length===0){
