@@ -29,14 +29,13 @@ export const ProductsScreen = () => {
     const createProductHandler =(e)=>{
         e.preventDefault();
         if(createUpdate==='Create'){
+            console.log(name, price, stock, provider);
             dispatch(createProduct(name, price, stock, provider));
             handlerSearchProducts();
         }else{
             dispatch(updateProduct(product.id, name, price, stock, provider));
             handlerSearchProducts();
-            
             dispatch(clearProduct());
-            setUpdateP(true);
         }
 
     }
@@ -45,6 +44,7 @@ export const ProductsScreen = () => {
     }
     const handlerInputSelect = (e)=>{
         setUpdateP(true);
+        console.log(e.target.value)
         const target={
             name: e.target.name,
             value: e.target.value
@@ -80,6 +80,7 @@ export const ProductsScreen = () => {
         fetchProviders();
     }
     const feetInputs = ()=>{
+
         if( createUpdate ==='Update' && Object.keys(product).length!=0 && !updateP){
             inputChange({name: product.name, price: product.price, provider: product.providerId, stock: product.stock});
         }
