@@ -40,7 +40,6 @@ export const LoginScreen = () => {
 
   const responseGoogle = (response) => {
     const {id_token} = response.getAuthResponse();
-    console.log(id_token);
     dispatch(loginGoogle(id_token));
   }
 
